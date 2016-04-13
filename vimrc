@@ -12,7 +12,7 @@ call dein#add('AndrewRadev/vim-eco')
 call dein#add('ekalinin/Dockerfile.vim')
 call dein#add('kchmck/vim-coffee-script')
 call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimproc.vim', {'build': 'tools\\update-dll-mingw'})
+call dein#add('Shougo/vimproc.vim', {'build': has('win32') ? 'tools\\update-dll-mingw' : 'make'})
 call dein#add('Shougo/vimshell.vim')
 call dein#add('tpope/vim-surround')
 
