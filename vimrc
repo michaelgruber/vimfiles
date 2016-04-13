@@ -4,7 +4,6 @@ if &compatible
 endif
 set runtimepath^=$HOME/vimfiles/bundle/repos/github.com/Shougo/dein.vim
 
-
 call dein#begin(expand('$HOME/vimfiles/bundle'))
 
 call dein#add('Shougo/dein.vim')
@@ -36,6 +35,7 @@ set number       " line numbers
 set ruler        " cursor location
 set spell        " spell checker
 set t_Co=256     " 256 colors if terminal supports it
+set novisualbell " stop beeping
 
 " Persist undo
 if has('persistent_undo')
