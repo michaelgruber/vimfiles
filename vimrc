@@ -10,6 +10,7 @@ call dein#add('Shougo/dein.vim')
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('AndrewRadev/vim-eco')
 call dein#add('ekalinin/Dockerfile.vim')
+call dein#add('fatih/vim-go')
 call dein#add('kchmck/vim-coffee-script')
 call dein#add('pangloss/vim-javascript')
 call dein#add('Shougo/unite.vim')
@@ -62,14 +63,9 @@ set expandtab " soft tabs
 set tabstop=2
 set shiftwidth=2
 
-autocmd FileType go set noexpandtab tabstop=8 shiftwidth=8
-
 " Syntax
 autocmd BufRead,BufNewFile *.rabl set filetype=ruby " Rabl
 autocmd BufRead,BufNewFile *.md set filetype=text
-
-" Go
-set runtimepath+=$GOROOT/misc/vim
 
 " Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
