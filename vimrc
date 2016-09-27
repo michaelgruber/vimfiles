@@ -15,6 +15,7 @@ call dein#add('pangloss/vim-javascript')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimproc.vim', {'build': has('win32') ? 'tools\\update-dll-mingw' : 'make'})
 call dein#add('Shougo/vimshell.vim')
+call dein#add('thinca/vim-qfreplace')
 call dein#add('tpope/vim-surround')
 
 call dein#end()
@@ -80,6 +81,18 @@ let g:unite_source_grep_recursive_opt = ''
 
 nnoremap <leader>f :<C-u>Unite -start-insert file_rec/async:!<CR>
 nnoremap <leader>s :<C-u>Unite -start-insert -buffer-name=search grep:.<CR>
+
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()"{{{
+  " Overwrite settings.
+
+  let unite = unite#get_current_unite()
+  if unite.profile_name ==# 'search'
+    nnoremap <silent><buffer><expr> r unite#do_action('replace')
+  else
+    nnoremap <silent><buffer><expr> r unite#do_action('rename')
+  endif
+endfunction"}}}
 
 " Windows
 if has('win32')
