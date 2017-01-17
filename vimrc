@@ -40,6 +40,10 @@ set spell        " spell checker
 set t_Co=256     " 256 colors if terminal supports it
 set novisualbell " stop beeping
 
+" Sierra + tmux clipboard fix
+" https://github.com/tmux/tmux/issues/543#issuecomment-248980734
+set clipboard=unnamed
+
 " Persist undo
 if has('persistent_undo')
   set undodir=$HOME/vimfiles/backups
