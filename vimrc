@@ -2,33 +2,38 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath^=$HOME/vimfiles/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/vimfiles/bundle/repos/github.com/Shougo/dein.vim
 
-call dein#begin(expand('$HOME/vimfiles/bundle'))
+if dein#load_state(expand('$HOME/vimfiles/bundle'))
+  call dein#begin(expand('$HOME/vimfiles/bundle'))
 
-call dein#add('Shougo/dein.vim')
-call dein#add('altercation/vim-colors-solarized')
-call dein#add('AndrewRadev/vim-eco')
-call dein#add('ekalinin/Dockerfile.vim')
-call dein#add('fatih/vim-go')
-call dein#add('kchmck/vim-coffee-script')
-call dein#add('pangloss/vim-javascript')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimproc.vim', {'build': has('win32') ? 'tools\\update-dll-mingw' : 'make'})
-call dein#add('Shougo/vimshell.vim')
-call dein#add('thinca/vim-qfreplace')
-call dein#add('tpope/vim-surround')
+  call dein#add('Shougo/dein.vim')
+  call dein#add('altercation/vim-colors-solarized')
+  call dein#add('AndrewRadev/vim-eco')
+  call dein#add('ekalinin/Dockerfile.vim')
+  call dein#add('fatih/vim-go')
+  call dein#add('hashivim/vim-terraform')
+  call dein#add('kchmck/vim-coffee-script')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/vimproc.vim', {'build': has('win32') ? 'tools\\update-dll-mingw' : 'make'})
+  call dein#add('Shougo/vimshell.vim')
+  call dein#add('stephpy/vim-yaml')
+  call dein#add('thinca/vim-qfreplace')
+  call dein#add('tpope/vim-surround')
 
-call dein#end()
+  call dein#end()
+  call dein#save_state()
+endif
 
 filetype plugin indent on
+syntax enable
 
 if dein#check_install()
   call dein#install()
 endif
 
 " General
-syntax on
 cd %:p:h         " set working dir to current file/dir when vim opens
 set path=$PWD/** " add subdirectories to path for searching
 set backspace=2  " enable backspace
@@ -39,10 +44,6 @@ set ruler        " cursor location
 set spell        " spell checker
 set t_Co=256     " 256 colors if terminal supports it
 set novisualbell " stop beeping
-
-" Sierra + tmux clipboard fix
-" https://github.com/tmux/tmux/issues/543#issuecomment-248980734
-set clipboard=unnamed
 
 " Persist undo
 if has('persistent_undo')
@@ -63,9 +64,9 @@ silent! colorscheme solarized
 set background=light
 
 " Indentation
-set expandtab " soft tabs
 set tabstop=2
 set shiftwidth=2
+set expandtab " soft tabs
 
 " Syntax
 autocmd BufRead,BufNewFile *.rabl set filetype=ruby " Rabl
