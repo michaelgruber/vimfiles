@@ -13,8 +13,11 @@ if dein#load_state(expand('$HOME/vimfiles/bundle'))
   call dein#add('ekalinin/Dockerfile.vim')
   call dein#add('fatih/vim-go')
   call dein#add('hashivim/vim-terraform')
+  call dein#add('ianks/vim-tsx')
   call dein#add('kchmck/vim-coffee-script')
+  call dein#add('leafgarland/typescript-vim')
   call dein#add('pangloss/vim-javascript')
+  call dein#add('Quramy/tsuquyomi')
   call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimproc.vim', {'build': has('win32') ? 'tools\\update-dll-mingw' : 'make'})
@@ -131,11 +134,13 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {} " enable heavy omni completion
 endif
 
+let g:neocomplete#sources#omni#input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::' " for tsuquyomi
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'        " for perlomni.vim setting.
 
 " Windows
