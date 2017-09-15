@@ -14,6 +14,7 @@ if dein#load_state(expand('$HOME/vimfiles/bundle'))
   call dein#add('fatih/vim-go')
   call dein#add('hashivim/vim-terraform')
   call dein#add('ianks/vim-tsx')
+  call dein#add('junegunn/vim-easy-align')
   call dein#add('kchmck/vim-coffee-script')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('pangloss/vim-javascript')
@@ -75,6 +76,10 @@ set expandtab " soft tabs
 " Syntax
 autocmd BufRead,BufNewFile *.rabl set filetype=ruby " Rabl
 autocmd BufRead,BufNewFile *.md set filetype=text
+
+" Easy Align
+xnoremap ga <Plug>(EasyAlign)
+nnoremap ga <Plug>(EasyAlign)
 
 " Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
