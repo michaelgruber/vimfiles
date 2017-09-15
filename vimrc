@@ -77,6 +77,9 @@ set expandtab " soft tabs
 autocmd BufRead,BufNewFile *.rabl set filetype=ruby " Rabl
 autocmd BufRead,BufNewFile *.md set filetype=text
 
+" Force map :E to :Explore (netrwPlugin.vim 2016-02-08)
+command! -nargs=* -bar -bang -count=0 -complete=dir E call netrw#Explore(<count>,0,0+<bang>0,<q-args>)
+
 " Easy Align
 xnoremap ga <Plug>(EasyAlign)
 nnoremap ga <Plug>(EasyAlign)
